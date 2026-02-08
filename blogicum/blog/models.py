@@ -6,6 +6,7 @@ User = get_user_model()
 
 class BaseModel(models.Model):
     """Базовая модель. Добавляет флаг публикации и время создания."""
+
     is_published = models.BooleanField(
         default=True,
         verbose_name='Опубликовано',
