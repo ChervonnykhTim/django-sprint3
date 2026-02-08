@@ -121,14 +121,8 @@ class _TestModelAttrs:
     """Класс для проверки атрибутов моделей."""
 
     def test_model_attrs(self, model_name, field_name, expected_value,
-                         attr_name, model_admin=None, _field=None):
-        if model_admin:
-            model = model_admin
-        else:
-            from django.apps import apps
-            model = apps.get_model('blog', model_name)
+                         attr_name, field, model_admin=None):
 
-        field = model._meta.get_field(field_name)
         value = getattr(field, attr_name)
         assert value == expected_value, (
             f'Проверьте, что для поля `{field_name}` модели `{model_name}` '
