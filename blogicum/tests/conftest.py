@@ -120,8 +120,8 @@ def try_get_url(client, url: str):
 class _TestModelAttrs:
     """Класс для проверки атрибутов моделей."""
 
-    def test_model_attrs(self, model_name, field_name, expected_value,
-                         attr_name, model_admin=None):
+    def test_model_attrs(self, model_name, field_name, expected_value, 
+                         attr_name, model_admin=None, _field=None):
         if model_admin:
             model = model_admin
         else:
