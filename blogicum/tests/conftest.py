@@ -115,3 +115,22 @@ def try_get_url(client, url: str):
             f'При попытке загрузки страницы по адресу `{url}` возникла ошибка:'
             f' {response}'
         )
+
+
+class _TestModelAttrs:
+    """Класс для проверки атрибутов моделей."""
+
+    def test_model_attrs(self, model_name, field_name, expected_value,
+                         attr_name, model_admin=None):
+        if model_admin:
+            model = model_admin
+        else:
+            from django.apps import apps
+            model = apps.get_model('blog', model_name)
+
+        field = model._meta.get_field(field_name)
+        value = getattr(field, attr_name)
+        assert value == expected_value, (
+            f'Проверьте, что для поля `{field_name}` модели `{model_name}` '
+            f'атрибут `{attr_name}` имеет значение `{expected_value}`.'
+        )
