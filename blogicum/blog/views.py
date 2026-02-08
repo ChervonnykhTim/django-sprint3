@@ -15,14 +15,15 @@ def index(request):
         is_published=True,
         category__is_published=True
     ).order_by('-pub_date')[:5]  # Берем последние 5
-    
+
     context = {'post_list': post_list}
     return render(request, template, context)
 
 
 def post_detail(request, pk):
     template = 'blog/detail.html'
-    # Получаем пост или 404, если он не существует или скрыт (по тем же 3 условиям)
+    # Получаем пост или 404, если он не существует или скрыт (по тем же
+    # 3 условиям)
     post = get_object_or_404(
         Post.objects.filter(
             pub_date__lte=timezone.now(),
@@ -39,8 +40,8 @@ def category_posts(request, category_slug):
     template = 'blog/category.html'
     # Если категория не существует или скрыта — 404
     category = get_object_or_404(
-        Category, 
-        slug=category_slug, 
+        Category,
+        slug=category_slug,
         is_published=True
     )
     # Посты только этой категории с учетом условий публикации
@@ -49,7 +50,7 @@ def category_posts(request, category_slug):
         pub_date__lte=timezone.now(),
         is_published=True
     ).order_by('-pub_date')
-    
+
     context = {
         'category': category,
         'post_list': post_list
