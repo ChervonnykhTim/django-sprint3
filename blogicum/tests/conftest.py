@@ -121,7 +121,8 @@ class _TestModelAttrs:
     """Класс для проверки атрибутов моделей."""
 
     def test_model_attrs(self, model_name, field_name, expected_value,
-                         attr_name, field, type, model_admin=None):
+                         attr_name,
+                         field, type, model_admin=None, _params=None):
 
         assert isinstance(field, type), (
             f'Проверьте, что поле `{field_name}` модели `{model_name}` '
