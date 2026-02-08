@@ -122,8 +122,7 @@ class _TestModelAttrs:
 
     def test_model_attrs(self, model_name, field_name, expected_value,
                          attr_name,
-                         field, type, model_admin=None, _params=None):
-
+                         field, type, model_admin=None, params=None):
         assert isinstance(field, type), (
             f'Проверьте, что поле `{field_name}` модели `{model_name}` '
             f'имеет тип `{type.__name__}`.'
