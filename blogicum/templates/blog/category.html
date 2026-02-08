@@ -1,21 +1,14 @@
-{% extends 'base.html' %}
-{% block title %}Публикации в категории {{ slug_name }}{% endblock %}
+{% extends "base.html" %}
+{% block title %}
+  Публикации в категории «{{ category.title }}»
+{% endblock %}
 {% block content %}
-<h1>Публикации в категории [[slug_name]]</h1>
-  {% for post in post_list %}
-    <div class="post">
-      <ul class="post-meta">
-        <li><strong>Место:</strong> {{ post.location }}</li>
-        <li><strong>Дата:</strong> [[post.date]]</li>
-        <li><strong>Категория:</strong> {{ post.category }}</li>
-      </ul>
-      <div class="post-text">]
-      </div>
-    </div>
-    {% if not forloop.last %}
-      <hr>
-    {% endif %}
-  {% empty %}
-    <p>Записей пока нет.</p>
-  {% endfor %}
-{% endblock content %}
+<h1>Публикации в категории «{{ category.title }}»</h1>
+<p class="mb-5">{{ category.description }}</p>
+{% for post in post_list %}
+  <article class="mb-5">  
+    {% include "includes/post_card.html" %}
+  </article>   
+{% endfor %}
+
+{% endblock %}
