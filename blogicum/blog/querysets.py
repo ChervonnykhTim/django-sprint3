@@ -7,6 +7,7 @@ class PostQuerySet(models.QuerySet):
     Пользовательский QuerySet для модели Post, содержащий
     общую логику фильтрации опубликованных постов.
     """
+
     def published(self):
         return self.filter(
             pub_date__lte=timezone.now(),
