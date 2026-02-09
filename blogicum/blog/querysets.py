@@ -1,9 +1,10 @@
 from django.db import models
 from django.utils import timezone
 
+
 class PostQuerySet(models.QuerySet):
     """
-    Пользовательский QuerySet для модели Post, содержащий 
+    Пользовательский QuerySet для модели Post, содержащий
     общую логику фильтрации опубликованных постов.
     """
     def published(self):
