@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 
+from .querysets import PostQuerySet
+
 User = get_user_model()
 
 
@@ -86,9 +88,12 @@ class Post(BaseModel):
         verbose_name='Категория'
     )
 
+    objects = PostQuerySet.as_manager()
+
     class Meta:
         verbose_name = 'публикация'
         verbose_name_plural = 'Публикации'
+        ordering = ['-pub_date']
 
     def __str__(self):
         return self.title
