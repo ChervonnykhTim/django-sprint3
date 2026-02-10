@@ -1,10 +1,15 @@
 from django.contrib import admin
+
 from .models import Category, Location, Post
 
 
-admin.site.site_header = 'Администрирование Блога'
-admin.site.site_title = 'Мой сайт администрирования'
-admin.site.index_title = 'Добро пожаловать в админ-панель'
+class MyBlogAdminSite(admin.AdminSite):
+    site_header = 'Администрирование Блога'
+    site_title = 'Панель управления блогом'
+    index_title = 'Добро пожаловать в админку Блога'
+
+
+admin_site = MyBlogAdminSite(name='my_admin')
 
 
 @admin.register(Post)
